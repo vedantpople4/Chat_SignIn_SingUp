@@ -41,8 +41,20 @@ class _MyHomePageState extends State<MyHomePage> {
         body: TabBarView(
           children: pages,
         ),
-
+        bottomNavigationBar: Container(
+          margin: EdgeInsets.only(bottom: 20.00),
+          child: new TabBar(
+            tabs: [
+              Tab(
+                icon: Icon(Icons.home),
+              ),
+              Tab(
+                icon: Icon(Icons.search),
+              )
+            ],
+          ),
+        ),
       ),
-    )
+    );
   }
 }
