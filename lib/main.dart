@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutterfirebase/pages/notifications.dart';
+import 'package:flutterfirebase/pages/profile.dart';
+import 'package:flutterfirebase/pages/search.dart';
+import 'package:flutterfirebase/pages/create_post.dart';
+import 'package:flutterfirebase/models/global.dart';
+import 'models/appbar.dart';
 
 void main() {
   runApp(MyApp());
@@ -26,9 +32,9 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   List<Widget> pages = [
-    Homepage(),
+    //Homepage(),
     SearchPage(),
-    CreatpostPage(),
+    //CreatpostPage(),
     NotificationsPage(),
     ProfilePage()
   ];
