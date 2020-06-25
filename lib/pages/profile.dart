@@ -4,11 +4,15 @@ import 'package:flutterfirebase/models/post.dart';
 import 'package:url_launcher_web/url_launcher_web.dart';
 import 'package:flutter/services.dart';
 
-launchweb async{
+launchweb() async{
   const url = 'https://www.instagram.com/kallehallden/';
-
-}
-
+  if(canLaunch(url) != null){
+    launch(url);
+  }
+  else{
+    throw 'Could not launch $url';
+  }
+};
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -125,7 +129,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               Text("I am a profile on instagram"),
                               InkWell(
                                 child: new Text('my instagram'),
-                                onTap: () => launch('https://www.instagram.com/kallehallden/')
+                                onTap: () => launchweb();
                                 ),
                             ],
                           ),
