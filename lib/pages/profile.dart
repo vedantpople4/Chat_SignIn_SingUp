@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfirebase/models/global.dart';
 import 'package:flutterfirebase/models/post.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher_web/url_launcher_web.dart';
 import 'package:flutter/services.dart';
+
+launchweb async{
+  const url = 'https://www.instagram.com/kallehallden/';
+
+}
+
 
 class ProfilePage extends StatefulWidget {
   @override
