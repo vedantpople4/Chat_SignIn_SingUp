@@ -1,10 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutterfirebase/pages/notifications.dart';
-import 'package:flutterfirebase/pages/profile.dart';
-import 'package:flutterfirebase/pages/search.dart';
-import 'package:flutterfirebase/pages/create_post.dart';
-import 'package:flutterfirebase/models/global.dart';
-import 'models/appbar.dart';
 
 void main() {
   runApp(MyApp());
@@ -42,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 5,
-        initialIndex: 0,
+      initialIndex: 0,
       child: Scaffold(
         body: TabBarView(
           children: pages,
