@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterfirebase/widgets/widget.dart';
 
 class SignIn extends StatefulWidget {
   @override
@@ -8,6 +9,8 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: appBarMain(context),
+    );
   }
 }
