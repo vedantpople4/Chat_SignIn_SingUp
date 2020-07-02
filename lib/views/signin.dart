@@ -15,8 +15,23 @@ class _SignInState extends State<SignIn> {
           padding: EdgeInsets.symmetric(horizontal: 24),
           child: Column(
             children: [
-              TextField(decoration: textFieldInputDecoration("email")),
-              TextField(decoration: textFieldInputDecoration("password")),
+              TextField(
+                  style: simpleTextFieldStyle(),
+                  decoration: textFieldInputDecoration("email")),
+              TextField(
+                  style: simpleTextFieldStyle(),
+                  decoration: textFieldInputDecoration("password")),
+              SizedBox(
+                height: 8,
+              ),
+              Container(
+                alignment: Alignment.centerRight,
+                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                child: Text("Forgot password", style: simpleTextFieldStyle()),
+              ),
+              SizedBox(
+                height: 8,
+              ),
             ],
           ),
         ));

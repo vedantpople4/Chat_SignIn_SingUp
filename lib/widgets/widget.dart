@@ -19,3 +19,7 @@ InputDecoration textFieldInputDecoration(String hintText) {
         borderSide: BorderSide(color: Colors.white),
       ));
 }
+
+TextStyle simpleTextFieldStyle() {
+  return TextStyle(color: Colors.white);
+}
