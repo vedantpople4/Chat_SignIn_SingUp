@@ -32,6 +32,18 @@ class _SignInState extends State<SignIn> {
               SizedBox(
                 height: 8,
               ),
+              Container(
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(colors: [
+                  const Color(0xff007EF4),
+                  const Color(0xff2A75BC)
+                ])),
+                child: Text("Sign In",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 17,
+                    )),
+              )
             ],
           ),
         ));
