@@ -42,11 +42,7 @@ class _SignInState extends State<SignIn> {
                   ]),
                   borderRadius: BorderRadius.circular(30),
                 ),
-                child: Text("Sign In",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 17,
-                    )),
+                child: Text("Sign In", style: mediumTextFieldStyle()),
               ),
               SizedBox(
                 height: 8,
@@ -56,10 +52,7 @@ class _SignInState extends State<SignIn> {
                 width: MediaQuery.of(context).size.width,
                 padding: EdgeInsets.symmetric(vertical: 20),
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(colors: [
-                    const Color(0xff007EF4),
-                    const Color(0xff2A75BC)
-                  ]),
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(30),
                 ),
                 child: Text("Sign In with Google",
@@ -67,7 +60,17 @@ class _SignInState extends State<SignIn> {
                       color: Colors.white,
                       fontSize: 17,
                     )),
-              )
+              ),
+              SizedBox(
+                height: 8,
+              ),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text("Dont have an account? ",
+                        style: mediumTextFieldStyle()),
+                    Text("Register now", style: mediumTextFieldStyle()),
+                  ])
             ])));
   }
 }
