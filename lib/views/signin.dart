@@ -62,7 +62,7 @@ class _SignInState extends State<SignIn> {
                   ]),
                   borderRadius: BorderRadius.circular(30),
                 ),
-                child: Text("Sign In with",
+                child: Text("Sign In with Google",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 17,
