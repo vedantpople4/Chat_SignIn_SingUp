@@ -69,7 +69,12 @@ class _SignInState extends State<SignIn> {
                   children: <Widget>[
                     Text("Dont have an account? ",
                         style: mediumTextFieldStyle()),
-                    Text("Register now", style: mediumTextFieldStyle()),
+                    Text("Register now",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 17,
+                          decoration: TextDecoration.underline,
+                        )),
                   ])
             ])));
   }
