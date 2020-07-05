@@ -19,6 +19,9 @@ class SignUpState extends State<SignUp> {
                 child: Column(children: [
                   TextField(
                       style: simpleTextFieldStyle(),
+                      decoration: textFieldInputDecoration("username")),
+                  TextField(
+                      style: simpleTextFieldStyle(),
                       decoration: textFieldInputDecoration("email")),
                   TextField(
                       style: simpleTextFieldStyle(),
@@ -71,9 +74,9 @@ class SignUpState extends State<SignUp> {
                   Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Text("Dont have an account? ",
+                        Text("Already have an account ",
                             style: mediumTextFieldStyle()),
-                        Text("Register now",
+                        Text("SignIn now",
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 17,
