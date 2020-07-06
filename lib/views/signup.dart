@@ -6,7 +6,7 @@ class SignUp extends StatefulWidget {
   _SignUpState createState() => _SignUpState();
 }
 
-class SignUpState extends State<SignUp> {
+class _SignUpState extends State<SignUp> {
   TextEditingController userNameTextEditingController =
       new TextEditingController();
   TextEditingController emailTextEditingController =
