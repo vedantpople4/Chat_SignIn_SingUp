@@ -15,6 +15,10 @@ class _SignUpState extends State<SignUp> {
   TextEditingController passwordTextEditingController =
       new TextEditingController();
 
+  signMeUP() {
+    if (formKey.currentState.validate()) {}
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,9 +30,13 @@ class _SignUpState extends State<SignUp> {
                 padding: EdgeInsets.symmetric(horizontal: 24),
                 child: Column(children: [
                   Form(
+                    key: formKey,
                     child: Column(
                       children: [
                         TextFormField(
+                            validator: (val) {
+                              return val.isEmpty() || "This is an example";
+                            },
                             controller: userNameTextEditingController,
                             style: simpleTextFieldStyle(),
                             decoration: textFieldInputDecoration("username")),
@@ -55,19 +63,23 @@ class _SignUpState extends State<SignUp> {
                   SizedBox(
                     height: 8,
                   ),
-                  Container(
-                    alignment: Alignment.center,
-                    width: MediaQuery.of(context).size.width,
-                    padding: EdgeInsets.symmetric(vertical: 20),
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(colors: [
-                        const Color(0xff007EF4),
-                        const Color(0xff2A75BC)
-                      ]),
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    child: Text("Sign In", style: mediumTextFieldStyle()),
-                  ),
+                  GestureDetector(
+                      onTap: () {
+                        signMeUP();
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        width: MediaQuery.of(context).size.width,
+                        padding: EdgeInsets.symmetric(vertical: 20),
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(colors: [
+                            const Color(0xff007EF4),
+                            const Color(0xff2A75BC)
+                          ]),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: Text("Sign Up", style: mediumTextFieldStyle()),
+                      )),
                   SizedBox(
                     height: 8,
                   ),
@@ -79,7 +91,7 @@ class _SignUpState extends State<SignUp> {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(30),
                     ),
-                    child: Text("Sign In with Google",
+                    child: Text("Sign Up with Google",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 17,
