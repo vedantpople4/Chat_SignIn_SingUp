@@ -25,12 +25,15 @@ class SignUpState extends State<SignUp> {
                 padding: EdgeInsets.symmetric(horizontal: 24),
                 child: Column(children: [
                   TextField(
+                      controller: userNameTextEditingController,
                       style: simpleTextFieldStyle(),
                       decoration: textFieldInputDecoration("username")),
                   TextField(
+                      controller: emailTextEditingController,
                       style: simpleTextFieldStyle(),
                       decoration: textFieldInputDecoration("email")),
                   TextField(
+                      controller: passwordTextEditingController,
                       style: simpleTextFieldStyle(),
                       decoration: textFieldInputDecoration("password")),
                   SizedBox(
