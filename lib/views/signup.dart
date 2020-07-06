@@ -35,8 +35,8 @@ class _SignUpState extends State<SignUp> {
                       children: [
                         TextFormField(
                             validator: (val) {
-                              return val.isEmpty || val.length < 4
-                                  ? "This is an example"
+                              return val.isEmpty || val.length < 2
+                                  ? "Please provide a valid Username"
                                   : null;
                             },
                             controller: userNameTextEditingController,
@@ -45,14 +45,18 @@ class _SignUpState extends State<SignUp> {
                         TextFormField(
                             validator: (val) {
                               return RegExp(
-                                .hasMatch(val) ? null : "Please provide a valid emailId"
-
-                              );
+                                          r"^[a-zA-z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@-[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                      .hasMatch(val)
+                                  ? null
+                                  : "Please provide a valid emailId";
                             },
                             controller: emailTextEditingController,
                             style: simpleTextFieldStyle(),
                             decoration: textFieldInputDecoration("email")),
                         TextFormField(
+                          validator: (val){
+                            return val.length >6 ? 
+                          },
                             controller: passwordTextEditingController,
                             style: simpleTextFieldStyle(),
                             decoration: textFieldInputDecoration("password")),
