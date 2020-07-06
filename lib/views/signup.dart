@@ -35,12 +35,20 @@ class _SignUpState extends State<SignUp> {
                       children: [
                         TextFormField(
                             validator: (val) {
-                              return val.isEmpty() || "This is an example";
+                              return val.isEmpty || val.length < 4
+                                  ? "This is an example"
+                                  : null;
                             },
                             controller: userNameTextEditingController,
                             style: simpleTextFieldStyle(),
                             decoration: textFieldInputDecoration("username")),
                         TextFormField(
+                            validator: (val) {
+                              return RegExp(
+                                .hasMatch(val) ? null : "Please provide a valid emailId"
+
+                              );
+                            },
                             controller: emailTextEditingController,
                             style: simpleTextFieldStyle(),
                             decoration: textFieldInputDecoration("email")),
