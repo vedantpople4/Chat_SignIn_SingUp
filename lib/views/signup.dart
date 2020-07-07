@@ -28,8 +28,7 @@ class _SignUpState extends State<SignUp> {
           .signUpwithEmailAndPassword(emailTextEditingController.text,
               passwordTextEditingController.text)
           .then((val) {
-        print("${val.uid}");
-
+        //print("${val.uid}");
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => ChatRoom()));
       });

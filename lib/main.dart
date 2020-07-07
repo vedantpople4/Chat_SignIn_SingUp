@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfirebase/views/signin.dart';
-import 'package:flutterfirebase/views/signup.dart';
 
 void main() {
   runApp(MyApp());
