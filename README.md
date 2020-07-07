@@ -1,4 +1,5 @@
-# flutterfirebase
+# Flutter Chat App with Signin and SignUp
+
 
 A new Flutter application.
 
