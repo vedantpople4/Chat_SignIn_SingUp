@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfirebase/services/auth.dart';
+import 'package:flutterfirebase/views/chatroomscreen.dart';
 import 'package:flutterfirebase/widgets/widget.dart';
 
 class SignUp extends StatefulWidget {
@@ -27,7 +28,10 @@ class _SignUpState extends State<SignUp> {
           .signUpwithEmailAndPassword(emailTextEditingController.text,
               passwordTextEditingController.text)
           .then((val) {
-        print("$val");
+        print("${val.uid}");
+
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => ChatRoom()));
       });
     }
   }
