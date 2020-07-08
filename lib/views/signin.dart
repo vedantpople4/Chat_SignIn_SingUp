@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutterfirebase/widgets/widget.dart';
 
 class SignIn extends StatefulWidget {
+  final Function toggle;
+  SignIn(this.toggle);
+
   @override
   _SignInState createState() => _SignInState();
 }
