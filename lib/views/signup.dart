@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfirebase/services/auth.dart';
+import 'package:flutterfirebase/services/database.dart';
 import 'package:flutterfirebase/views/chatroomscreen.dart';
 import 'package:flutterfirebase/widgets/widget.dart';
 
@@ -13,6 +14,8 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   bool isLoading = false;
   AuthMethods authMethods = new AuthMethods();
+  DatabaseMethods databaseMethods = new DatabaseMethods();
+
   final formKey = GlobalKey<FormState>();
   TextEditingController userNameTextEditingController =
       new TextEditingController();
@@ -31,6 +34,9 @@ class _SignUpState extends State<SignUp> {
               passwordTextEditingController.text)
           .then((val) {
         //print("${val.uid}");
+        Map<>
+
+        databaseMethods.uploadUserInfo(userMap);
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => ChatRoom()));
       });
