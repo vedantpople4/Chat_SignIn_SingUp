@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutterfirebase/helper/authenticate.dart';
 import 'package:flutterfirebase/services/auth.dart';
-import 'package:flutterfirebase/views/signin.dart';
+import 'package:flutterfirebase/views/search.dart';
+//import 'package:flutterfirebase/views/signin.dart';
 
 class ChatRoom extends StatefulWidget {
   @override
@@ -22,8 +24,8 @@ class _ChatRoomState extends State<ChatRoom> {
           GestureDetector(
             onTap: () {
               authMethods.signOut();
-              Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (context) => SignIn()));
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => Authenticate()));
             },
             child: Container(
               padding: EdgeInsets.symmetric(),
@@ -31,6 +33,13 @@ class _ChatRoomState extends State<ChatRoom> {
             ),
           )
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.search),
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => SearchScreen()));
+        },
       ),
     );
   }

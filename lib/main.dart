@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterfirebase/views/signin.dart';
+import 'package:flutterfirebase/helper/authenticate.dart';
+//import 'package:flutterfirebase/views/signin.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Color(0xff1F1F1F1),
         primarySwatch: Colors.blue,
       ),
-      home: SignIn(),
+      home: Authenticate(),
     );
   }
 }
