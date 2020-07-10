@@ -4,6 +4,8 @@ import 'package:flutterfirebase/views/chatroomscreen.dart';
 import 'package:flutterfirebase/widgets/widget.dart';
 
 class SignUp extends StatefulWidget {
+  final Function toggle;
+  SignUp(this.toggle);
   @override
   _SignUpState createState() => _SignUpState();
 }
@@ -146,6 +148,20 @@ class _SignUpState extends State<SignUp> {
                           children: <Widget>[
                             Text("Already have an account ",
                                 style: mediumTextFieldStyle()),
+                            GestureDetector(
+                                onTap: () {
+                                  widget.toggle();
+                                },
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(vertical: 8),
+                                  child: Text(
+                                    "Register now",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 17,
+                                        decoration: TextDecoration.underline),
+                                  ),
+                                )),
                             Text("SignIn now",
                                 style: TextStyle(
                                   color: Colors.white,

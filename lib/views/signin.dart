@@ -76,6 +76,20 @@ class _SignInState extends State<SignIn> {
                       children: <Widget>[
                         Text("Dont have an account? ",
                             style: mediumTextFieldStyle()),
+                        GestureDetector(
+                            onTap: () {
+                              widget.toggle();
+                            },
+                            child: Container(
+                              padding: EdgeInsets.symmetric(vertical: 8),
+                              child: Text(
+                                "Register now",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 17,
+                                    decoration: TextDecoration.underline),
+                              ),
+                            )),
                         Text("Register now",
                             style: TextStyle(
                               color: Colors.white,
