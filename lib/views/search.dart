@@ -112,11 +112,11 @@ class SearchTile extends StatelessWidget {
             children: <Widget>[
               Text(
                 userName,
-                style: simpleTextFieldStyle(),
+                style: mediumTextFieldStyle(),
               ),
               Text(
                 userEmail,
-                style: simpleTextFieldStyle(),
+                style: mediumTextFieldStyle(),
               ),
             ],
           ),
