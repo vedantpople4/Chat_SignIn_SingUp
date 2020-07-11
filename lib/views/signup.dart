@@ -34,9 +34,12 @@ class _SignUpState extends State<SignUp> {
               passwordTextEditingController.text)
           .then((val) {
         //print("${val.uid}");
-        Map<>
+        Map<String, String> userInfoMap = {
+          "name": userNameTextEditingController.text,
+          "email": emailTextEditingController.text
+        };
 
-        databaseMethods.uploadUserInfo(userMap);
+        databaseMethods.uploadUserInfo(userInfoMap);
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => ChatRoom()));
       });
