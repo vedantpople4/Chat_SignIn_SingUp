@@ -25,6 +25,8 @@ class _SearchScreenState extends State<SearchScreen> {
     });
   }
 
+  createChatroomAndStartConversation() {}
+
   Widget searchList() {
     return searchSnapshot != null
         ? ListView.builder(
@@ -121,12 +123,15 @@ class SearchTile extends StatelessWidget {
             ],
           ),
           Spacer(),
-          Container(
-            decoration: BoxDecoration(
-                color: Colors.blue, borderRadius: BorderRadius.circular(30)),
-            padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-            child: Text("Message", style: mediumTextFieldStyle()),
-          ),
+          GestureDetector(
+            onTap: () {},
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.blue, borderRadius: BorderRadius.circular(30)),
+              padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+              child: Text("Message", style: mediumTextFieldStyle()),
+            ),
+          )
         ],
       ),
     );
