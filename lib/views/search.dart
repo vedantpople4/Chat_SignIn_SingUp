@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterfirebase/helper/constants.dart';
 import 'package:flutterfirebase/services/database.dart';
 import 'package:flutterfirebase/widgets/widget.dart';
 
@@ -26,8 +27,15 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   createChatroomAndStartConversation(String userName) {
-    List<String> users = [userName, ];
-    databaseMethods.createChatRoom()
+    List<String> users = [userName, Constants.myName];
+
+    String chatRoomId = getChatRoomId(userName, Constants.myName);
+    Map<String, dynamic> chatRoomMap = {
+      "users": users,
+      "chatroomId": chatRoomId
+    };
+
+    databaseMethods.createChatRoom(chatRoomId, chatRoomMap);
   }
 
   Widget searchList() {
@@ -138,5 +146,13 @@ class SearchTile extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+getChatRoomId(String a, String b) {
+  if (a.substring(0, 1).codeUnitAt(0) > b.substring(0, 1).codeUnitAt(0)) {
+    return "$b\_$a";
+  } else {
+    return "$a\_$b";
   }
 }

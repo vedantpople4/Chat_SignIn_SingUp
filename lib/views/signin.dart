@@ -5,6 +5,8 @@ import 'package:flutterfirebase/services/auth.dart';
 import 'package:flutterfirebase/services/database.dart';
 import 'package:flutterfirebase/widgets/widget.dart';
 
+import 'chatRoomScreen.dart';
+
 class SignIn extends StatefulWidget {
   final Function toggle;
   SignIn(this.toggle);
@@ -45,7 +47,6 @@ class _SignInState extends State<SignIn> {
               passwordTextEditingController.text)
           .then((val) {
         if (val != null) {
-          databaseMethods.getUserByUserEmail(emailTextEditingController.text);
           HelperFunctions.saveUserLoggedInSharedPreference(true);
           Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (context) => ChatRoom()));

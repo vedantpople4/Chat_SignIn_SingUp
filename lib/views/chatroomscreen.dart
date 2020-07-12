@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfirebase/helper/authenticate.dart';
+import 'package:flutterfirebase/helper/constants.dart';
+import 'package:flutterfirebase/helper/helperfunctions.dart';
 import 'package:flutterfirebase/services/auth.dart';
 import 'package:flutterfirebase/views/search.dart';
 //import 'package:flutterfirebase/views/signin.dart';
@@ -11,8 +13,15 @@ class ChatRoom extends StatefulWidget {
 
 class _ChatRoomState extends State<ChatRoom> {
   AuthMethods authMethods = new AuthMethods();
-
   @override
+  void initState() async {
+    super.initState();
+  }
+
+  getUserInfo() {
+    Constants.myName = HelperFunctions.getUserNameSharedPreference()
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
