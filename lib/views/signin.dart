@@ -37,6 +37,8 @@ class _SignInState extends State<SignIn> {
           .getUserByUserEmail(emailTextEditingController.text)
           .then((val) {
         snapshotUserInfo = val;
+        HelperFunctions.saveUserEmailSharedPreference(
+            snapshotUserInfo.documents[0].data["name"]);
       });
       authMethods
           .signInWithEmailandPassword(emailTextEditingController.text,
