@@ -10,6 +10,10 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  TextEditingController emailTextEditingController =
+      new TextEditingController();
+  TextEditingController passwordTextEditingController =
+      new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,12 +24,18 @@ class _SignInState extends State<SignIn> {
                 height: 50.00,
                 padding: EdgeInsets.symmetric(horizontal: 24),
                 child: Column(children: [
-                  TextField(
-                      style: simpleTextFieldStyle(),
-                      decoration: textFieldInputDecoration("email")),
-                  TextField(
-                      style: simpleTextFieldStyle(),
-                      decoration: textFieldInputDecoration("password")),
+                  Column(
+                    children: <Widget>[
+                      TextField(
+                          controller: emailTextEditingController,
+                          style: simpleTextFieldStyle(),
+                          decoration: textFieldInputDecoration("email")),
+                      TextField(
+                          controller: passwordTextEditingController,
+                          style: simpleTextFieldStyle(),
+                          decoration: textFieldInputDecoration("password")),
+                    ],
+                  ),
                   SizedBox(
                     height: 8,
                   ),

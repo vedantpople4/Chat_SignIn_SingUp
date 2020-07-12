@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterfirebase/helper/helperfunctions.dart';
 import 'package:flutterfirebase/services/auth.dart';
 import 'package:flutterfirebase/services/database.dart';
 import 'package:flutterfirebase/views/chatroomscreen.dart';
@@ -31,6 +32,11 @@ class _SignUpState extends State<SignUp> {
         "email": emailTextEditingController.text
       };
 
+      HelperFunctions.saveUserEmailSharedPreference(
+          emailTextEditingController.text);
+      HelperFunctions.saveUserEmailSharedPreference(
+          userNameTextEditingController.text);
+
       setState(() {
         isLoading = true;
       });
@@ -41,6 +47,7 @@ class _SignUpState extends State<SignUp> {
         //print("${val.uid}");
 
         databaseMethods.uploadUserInfo(userInfoMap);
+        HelperFunctions.saveUserLoggedInSharedPreference(true);
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => ChatRoom()));
       });
