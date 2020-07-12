@@ -25,7 +25,10 @@ class _SearchScreenState extends State<SearchScreen> {
     });
   }
 
-  createChatroomAndStartConversation() {}
+  createChatroomAndStartConversation(String userName) {
+    List<String> users = [userName, ];
+    databaseMethods.createChatRoom()
+  }
 
   Widget searchList() {
     return searchSnapshot != null
