@@ -44,22 +44,24 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   createChatroomAndStartConversation({String userName}) {
-  List<String> users = [userName, Constants.myName];
+    List<String> users = [userName, Constants.myName];
 
-  String chatRoomId = getChatRoomId(userName, Constants.myName);
-  Map<String, dynamic> chatRoomMap = {"users": users, "chatroomId": chatRoomId};
+    String chatRoomId = getChatRoomId(userName, Constants.myName);
+    Map<String, dynamic> chatRoomMap = {
+      "users": users,
+      "chatroomId": chatRoomId
+    };
 
-  DatabaseMethods().createChatRoom(chatRoomId, chatRoomMap);
-  Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => ConversationScreen(),
-      ));
-}
+    DatabaseMethods().createChatRoom(chatRoomId, chatRoomMap);
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ConversationScreen(),
+        ));
+  }
 
-
-Widget SearchTile({String userName, String userEmail}){
-  return Container(
+  Widget SearchTile({String userName, String userEmail}) {
+    return Container(
       padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
       child: Row(
         children: <Widget>[
@@ -91,7 +93,7 @@ Widget SearchTile({String userName, String userEmail}){
         ],
       ),
     );
-}
+  }
 
   @override
   void initState() {
@@ -147,19 +149,6 @@ Widget SearchTile({String userName, String userEmail}){
         ),
       ),
     );
-  }
-}
-
-
-
-class SearchTile extends StatelessWidget {
-  final String userName;
-  final String userEmail;
-  SearchTile({this.userName, this.userEmail});
-
-  @override
-  Widget build(BuildContext context) {
-    return 
   }
 }
 
