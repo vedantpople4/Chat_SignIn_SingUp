@@ -1,7 +1,10 @@
+import 'dart:js';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterfirebase/helper/constants.dart';
 import 'package:flutterfirebase/services/database.dart';
+import 'package:flutterfirebase/views/conversation_screen.dart';
 import 'package:flutterfirebase/widgets/widget.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -26,31 +29,7 @@ class _SearchScreenState extends State<SearchScreen> {
     });
   }
 
-  createChatroomAndStartConversation(String userName) {
-    List<String> users = [userName, Constants.myName];
-
-    String chatRoomId = getChatRoomId(userName, Constants.myName);
-    Map<String, dynamic> chatRoomMap = {
-      "users": users,
-      "chatroomId": chatRoomId
-    };
-
-    databaseMethods.createChatRoom(chatRoomId, chatRoomMap);
-  }
-
-  Widget searchList() {
-    return searchSnapshot != null
-        ? ListView.builder(
-            itemCount: searchSnapshot.documents.length,
-            shrinkWrap: true,
-            itemBuilder: (context, index) {
-              return SearchTile(
-                userName: searchSnapshot.documents[index].data["name"],
-                userEmail: searchSnapshot.documents[index].data["email"],
-              );
-            })
-        : Container();
-  }
+  
 
   @override
   void initState() {
@@ -108,6 +87,35 @@ class _SearchScreenState extends State<SearchScreen> {
     );
   }
 }
+
+createChatroomAndStartConversation({}) {
+    List<String> users = [userName, Constants.myName];
+
+    String chatRoomId = getChatRoomId(userName, Constants.myName);
+    Map<String, dynamic> chatRoomMap = {
+      "users": users,
+      "chatroomId": chatRoomId
+    };
+
+    databaseMethods.createChatRoom(chatRoomId, chatRoomMap);
+    Navigator.push(context,MaterialPageRoute(
+          builder: (context) => ConversationScreen(),
+        ));
+  }
+
+  Widget searchList() {
+    return searchSnapshot != null
+        ? ListView.builder(
+            itemCount: searchSnapshot.documents.length,
+            shrinkWrap: true,
+            itemBuilder: (context, index) {
+              return SearchTile(
+                userName: searchSnapshot.documents[index].data["name"],
+                userEmail: searchSnapshot.documents[index].data["email"],
+              );
+            })
+        : Container();
+  }
 
 class SearchTile extends StatelessWidget {
   final String userName;
