@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfirebase/helper/authenticate.dart';
-//import 'package:flutterfirebase/views/signin.dart';
 import 'package:flutterfirebase/helper/helperfunctions.dart';
 import 'package:flutterfirebase/views/chatroomscreen.dart';
 
