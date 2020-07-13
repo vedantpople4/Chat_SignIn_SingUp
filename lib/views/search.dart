@@ -19,6 +19,20 @@ class _SearchScreenState extends State<SearchScreen> {
 
   QuerySnapshot searchSnapshot;
 
+  Widget searchList() {
+    return searchSnapshot != null
+        ? ListView.builder(
+            itemCount: searchSnapshot.documents.length,
+            shrinkWrap: true,
+            itemBuilder: (context, index) {
+              return SearchTile(
+                userName: searchSnapshot.documents[index].data["name"],
+                userEmail: searchSnapshot.documents[index].data["email"],
+              );
+            })
+        : Container();
+  }
+
   initiateSearch() {
     databaseMethods
         .getUserByUsername(searchTextEditingController.text)
@@ -29,7 +43,55 @@ class _SearchScreenState extends State<SearchScreen> {
     });
   }
 
-  
+  createChatroomAndStartConversation({String userName}) {
+  List<String> users = [userName, Constants.myName];
+
+  String chatRoomId = getChatRoomId(userName, Constants.myName);
+  Map<String, dynamic> chatRoomMap = {"users": users, "chatroomId": chatRoomId};
+
+  DatabaseMethods().createChatRoom(chatRoomId, chatRoomMap);
+  Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ConversationScreen(),
+      ));
+}
+
+
+Widget SearchTile({String userName, String userEmail}){
+  return Container(
+      padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+      child: Row(
+        children: <Widget>[
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                userName,
+                style: mediumTextFieldStyle(),
+              ),
+              Text(
+                userEmail,
+                style: mediumTextFieldStyle(),
+              ),
+            ],
+          ),
+          Spacer(),
+          GestureDetector(
+            onTap: () {
+              createChatroomAndStartConversation();
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.blue, borderRadius: BorderRadius.circular(30)),
+              padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+              child: Text("Message", style: mediumTextFieldStyle()),
+            ),
+          )
+        ],
+      ),
+    );
+}
 
   @override
   void initState() {
@@ -88,34 +150,7 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 }
 
-createChatroomAndStartConversation({}) {
-    List<String> users = [userName, Constants.myName];
 
-    String chatRoomId = getChatRoomId(userName, Constants.myName);
-    Map<String, dynamic> chatRoomMap = {
-      "users": users,
-      "chatroomId": chatRoomId
-    };
-
-    databaseMethods.createChatRoom(chatRoomId, chatRoomMap);
-    Navigator.push(context,MaterialPageRoute(
-          builder: (context) => ConversationScreen(),
-        ));
-  }
-
-  Widget searchList() {
-    return searchSnapshot != null
-        ? ListView.builder(
-            itemCount: searchSnapshot.documents.length,
-            shrinkWrap: true,
-            itemBuilder: (context, index) {
-              return SearchTile(
-                userName: searchSnapshot.documents[index].data["name"],
-                userEmail: searchSnapshot.documents[index].data["email"],
-              );
-            })
-        : Container();
-  }
 
 class SearchTile extends StatelessWidget {
   final String userName;
@@ -124,36 +159,7 @@ class SearchTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-      child: Row(
-        children: <Widget>[
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                userName,
-                style: mediumTextFieldStyle(),
-              ),
-              Text(
-                userEmail,
-                style: mediumTextFieldStyle(),
-              ),
-            ],
-          ),
-          Spacer(),
-          GestureDetector(
-            onTap: () {},
-            child: Container(
-              decoration: BoxDecoration(
-                  color: Colors.blue, borderRadius: BorderRadius.circular(30)),
-              padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-              child: Text("Message", style: mediumTextFieldStyle()),
-            ),
-          )
-        ],
-      ),
-    );
+    return 
   }
 }
 
