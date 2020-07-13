@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterfirebase/helper/constants.dart';
@@ -44,22 +42,26 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   createChatroomAndStartConversation({String userName}) {
-    List<String> users = [userName, Constants.myName];
+    if (userName != Constants.myName) {
+      String chatRoomId = getChatRoomId(userName, Constants.myName);
+      List<String> users = [userName, Constants.myName];
+      Map<String, dynamic> chatRoomMap = {
+        "users": users,
+        "chatroomId": chatRoomId
+      };
 
-    String chatRoomId = getChatRoomId(userName, Constants.myName);
-    Map<String, dynamic> chatRoomMap = {
-      "users": users,
-      "chatroomId": chatRoomId
-    };
-
-    DatabaseMethods().createChatRoom(chatRoomId, chatRoomMap);
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => ConversationScreen(),
-        ));
+      DatabaseMethods().createChatRoom(chatRoomId, chatRoomMap);
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ConversationScreen(),
+          ));
+    } else {
+      print("you cannot send message to yourself");
+    }
   }
 
+  // ignore: non_constant_identifier_names
   Widget SearchTile({String userName, String userEmail}) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
@@ -81,7 +83,7 @@ class _SearchScreenState extends State<SearchScreen> {
           Spacer(),
           GestureDetector(
             onTap: () {
-              createChatroomAndStartConversation();
+              createChatroomAndStartConversation(userName: userName);
             },
             child: Container(
               decoration: BoxDecoration(
