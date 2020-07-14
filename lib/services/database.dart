@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutterfirebase/views/chatRoomScreen.dart';
+//import 'package:flutterfirebase/views/chatRoomScreen.dart';
 
 class DatabaseMethods {
   Future<void> addUserInfo(userData) async {
@@ -44,33 +44,21 @@ class DatabaseMethods {
         .snapshots();
   }
 
-  getUserByUsername(String username) async {
-    return await Firestore.instance
-        .collection("users")
-        .where("name", isEqualTo: username)
-        .getDocuments();
-  }
-
-  getUserByUserEmail(String userEmail) async {
-    return await Firestore.instance
-        .collection("users")
-        .where("name", isEqualTo: userEmail)
-        .getDocuments();
-  }
-
-  uploadUserInfo(userMap) {
-    Firestore.instance.collection("users").add(userMap).catchError((e) {
-      print(e.toString());
-    });
-  }
-
-  createChatRoom(String chatRoomId, chatRoomMap) {
+  Future<void> addMessage(String chatRoomId, chatMessageData) {
     Firestore.instance
-        .collection("users")
+        .collection("chatRoom")
         .document(chatRoomId)
-        .setData(chatRoomMap)
+        .collection("chats")
+        .add(chatMessageData)
         .catchError((e) {
       print(e.toString());
     });
+  }
+
+  getUserChats(String itIsMyName) async {
+    return await Firestore.instance
+        .collection("chatRoom")
+        .where('users', arrayContains: itIsMyName)
+        .snapshots();
   }
 }
