@@ -125,3 +125,17 @@ class _ChatState extends State<Chat> {
     );
   }
 }
+
+class MessageTile extends StatelessWidget {
+  final String message;
+  final bool sendByMe;
+
+  MessageTile({@required this.message, @required this.sendByMe});
+
+  @override 
+  Widget build(BuildContext context){
+    return Container(
+      padding: EdgeInsets.only(bottom: 8,top: 8, left: sendByMe ? )
+    )
+  }
+}
