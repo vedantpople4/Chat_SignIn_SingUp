@@ -4,6 +4,8 @@ import 'package:flutterfirebase/helper/constants.dart';
 import 'package:flutterfirebase/services/database.dart';
 import 'package:flutterfirebase/views/conversation_screen.dart';
 import 'package:flutterfirebase/widgets/widget.dart';
+//import 'package:flutterfirebase/models/user.dart';
+import 'package:flutterfirebase/views/chat.dart';
 
 class SearchScreen extends StatefulWidget {
   @override
@@ -16,6 +18,9 @@ class _SearchScreenState extends State<SearchScreen> {
       new TextEditingController();
 
   QuerySnapshot searchSnapshot;
+
+  bool isLoading = false;
+  bool haveUserSearched = false;
 
   Widget searchList() {
     return searchSnapshot != null
