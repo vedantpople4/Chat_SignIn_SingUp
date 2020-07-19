@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterfirebase/helper/constants.dart';
 import 'package:flutterfirebase/services/database.dart';
 import 'package:flutterfirebase/widgets/widget.dart';
-import 'package:flutterfirebase/views/chatRoomScreen.dart';
+import 'package:flutterfirebase/views/chatrooms.dart';
 
 class Chat extends StatefulWidget {
   final String charRoomId;

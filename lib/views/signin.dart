@@ -5,7 +5,7 @@ import 'package:flutterfirebase/services/auth.dart';
 import 'package:flutterfirebase/services/database.dart';
 import 'package:flutterfirebase/widgets/widget.dart';
 
-import 'chatRoomScreen.dart';
+import 'chatrooms.dart';
 
 class SignIn extends StatefulWidget {
   final Function toggle;
