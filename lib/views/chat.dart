@@ -46,7 +46,7 @@ class _ChatState extends State<Chat> {
         "message": messageEditingController.text,
         'time': DateTime.now().millisecondsSinceEpoch,
       };
-      DatabaseMethods().addMessage(widget.chatRoomId, chatMessageMap);
+      DatabaseMethods().addMessage(widget.charRoomId, chatMessageMap);
       setState(() {
         messageEditingController.text = "";
       });
@@ -55,7 +55,7 @@ class _ChatState extends State<Chat> {
 
   @override
   void initState() {
-    DatabaseMethods().getChats(widget.chatRoomId).then((val) {
+    DatabaseMethods().getChats(widget.charRoomId).then((val) {
       setState(() {
         chats = val;
       });

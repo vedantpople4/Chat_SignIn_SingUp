@@ -4,14 +4,14 @@ import 'package:flutterfirebase/views/chat.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-class AuthMethods {
+class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   User _userFromFirebaseUser(FirebaseUser user) {
-    return user != null ? User(userId: user.uid) : null;
+    return user != null ? User(uid: user.uid) : null;
   }
 
-  Future signInWithEmailandPassword(String email, String password) async {
+  Future signInWithEmailAndPassword(String email, String password) async {
     try {
       AuthResult result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
@@ -23,7 +23,7 @@ class AuthMethods {
     }
   }
 
-  Future signUpwithEmailAndPassword(String email, String password) async {
+  Future signUpWithEmailAndPassword(String email, String password) async {
     try {
       AuthResult result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
@@ -51,6 +51,7 @@ class AuthMethods {
         await _googleSignIn.signIn();
     final GoogleSignInAuthentication googleSignInAuthentication =
         await googleSignInAccount.authentication;
+
     final AuthCredential credential = GoogleAuthProvider.getCredential(
         idToken: googleSignInAuthentication.idToken,
         accessToken: googleSignInAuthentication.accessToken);
